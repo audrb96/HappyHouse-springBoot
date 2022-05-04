@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.repo.UserRepo">
+    <insert id="join" parameterType="User">
+    insert into user values (#{username}, #{email}, #{password},#{create_time}, #{ID}, #{phone});
+    </insert>
+
+    <update id="update" parameterType="User">
+    update user set password = #{password}, username = #{username}, phone = #{phone}, email = #{email} where ID = #{ID};
+    </update>
+
+    <delete id="delete" parameterType="string">
+        delete from user where ID = #{ID};
+    </delete>
+
+    <select id="select" parameterType="string" resultType="User">
+    select * from user where ID = #{ID};
+    </select>
+
+    <select id="selectAll" resultType="User">
+        select * from user;
+    </select>
+</mapper>

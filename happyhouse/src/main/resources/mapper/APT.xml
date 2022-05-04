@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.repo.APTRepo">
+
+    <select id="selectAll" parameterType="string" resultType="APT">
+        select i.aptName, d.dealAmount, d.area,concat(d.dealYear, '.', d.dealMonth, '.', d.dealDay) date, i.lat, i.lng
+        FROM houseinfo i join housedeal d
+        ON i.aptCode = d.aptCode
+        WHERE i.dongcode like concat(#{dong},'%')
+        GROUP BY i.aptName
+    </select>
+
+    <select id="dongLocation" parameterType="string" resultType="BaseAddress">
+        SELECT lat,lng
+        FROM baseaddress
+        WHERE dongCode like concat(#{dong},'%')
+        limit 1
+    </select>
+</mapper>

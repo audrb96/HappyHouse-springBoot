@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.repo.NoticeRepo">
+    <insert id="registNotice" parameterType="Notice">
+        insert into notice(title,userId,createTime,views,text) values (#{title}, #{userId}, #{createTime},#{views}, #{text});
+    </insert>
+
+    <select id="getNotice" parameterType="int" resultType="Notice">
+        select * from notice where articleNo = #{articleNo};
+    </select>
+
+    <select id="listNotice" resultType="Notice">
+        select * from notice;
+    </select>
+
+    <update id="updateNotice" parameterType="Notice">
+        update notice
+        set title = #{title}, text = #{text},userId = #{userId}, createTime = #{createTime},views = #{views}
+        where articleNo = #{articleNo}
+    </update>
+
+    <delete id="deleteNotice" parameterType="int">
+        delete from notice
+        where articleNo = #{articleNo}
+    </delete>
+
+</mapper>
