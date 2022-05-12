@@ -127,7 +127,7 @@
 		                    $.get(
 		                      "https://maps.googleapis.com/maps/api/geocode/json",
 		                      {
-		                        key: "AIzaSyC0-HJ8XQXXWU52TxrGLViCHP8o1plZhmo",
+		                        key: "//",
 		                        address: `${$("#dropdownMenuButton1").text().trim()}+${$("#dropdownMenuButton2").text().trim()}+${e.target.text.trim()}+${item}`,
 		                      },
 		                      function(data,status){
